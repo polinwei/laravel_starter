@@ -1,0 +1,20 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+
+/** NiceAdmin: Vendor CSS Files */
+@import url('../NiceAdmin/vendor/bootstrap/css/bootstrap.min.css');
+@import url('../NiceAdmin/vendor/bootstrap-icons/bootstrap-icons.css');
+@import url('../NiceAdmin/vendor/boxicons/css/boxicons.min.css');
+@import url('../NiceAdmin/vendor/quill/quill.snow.css');
+@import url('../NiceAdmin/vendor/quill/quill.bubble.css');
+@import url('../NiceAdmin/vendor/remixicon/remixicon.css');
+@import url('../NiceAdmin/vendor/simple-datatables/style.css');
+/** NiceAdmin: Template Main CSS File */
+@import url('../NiceAdmin/css/style.css');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
