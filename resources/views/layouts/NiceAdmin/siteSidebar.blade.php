@@ -17,6 +17,24 @@
     </li><!-- End Dashboard Nav -->
 
     <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#system-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>系統管理</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="system-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{ route('users.index') }}">
+              <i class="bi bi-circle"></i><span>用戶管理</span>
+            </a>
+            <li>
+                <a href="{{ route('system.user.profile.get') }}">
+                <i class="bi bi-circle"></i><span>用戶設定檔</span>
+                </a>
+            </li>
+          </li>
+        </ul>
+      </li><!-- End System Nav -->
+
+    <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
         <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
@@ -189,7 +207,7 @@
     <li class="nav-heading">Pages</li>
 
     <li class="nav-item">
-      <a class="nav-link collapsed" href="{{ route('user.profile.get') }}">
+      <a class="nav-link collapsed" href="{{ route('system.user.profile.get') }}">
         <i class="bi bi-person"></i>
         <span>Profile</span>
       </a>
