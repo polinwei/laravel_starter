@@ -14,6 +14,10 @@ class UserController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index','store']]);
+        $this->middleware('permission:user-create', ['only' => ['create','store']]);
+        $this->middleware('permission:user-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
     }
     //
     /**
@@ -30,7 +34,7 @@ class UserController extends Controller
         return view('system.users.index', compact('data'))
             ->with('i', ($request->input('page,1') - 1) * 5);
          */
-        
+
         $data = User::all();
         return view('system.users.index', compact('data'));
     }

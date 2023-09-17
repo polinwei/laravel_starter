@@ -3,6 +3,20 @@
     {{ Breadcrumbs::render('users.index') }}
 
     <section class="section">
+
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+            <p>{{ $message }}</p>
+            </div>
+        @endif
+
+        <div class="pull-right">
+            @can('user-create')
+                <a class="btn btn-success" href="{{ route('users.create') }}"> Create New User </a>
+             @endcan
+        </div>
+
+
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
