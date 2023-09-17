@@ -12,13 +12,26 @@ use Illuminate\Support\Arr;
 
 class UserController extends Controller
 {
-    public function __construct() {
-        
+    public function __construct()
+    {
     }
     //
-    public function index(Request $request)
-    {
+    /**
+     * index
+     * 顯示所有帳號
+     * @param  mixed $request
+     * @return void
+     */
+    public function index(Request $request) {
+
+        /** 以下使用 spatie/laravel-html tag */
+        /**
         $data = User::orderBy('id', 'DESC')->paginate(5);
-        return view('system.users.index', compact('data'))->with('i', ($request->input('page,1') - 1) * 5);
+        return view('system.users.index', compact('data'))
+            ->with('i', ($request->input('page,1') - 1) * 5);
+         */
+        
+        $data = User::all();
+        return view('system.users.index', compact('data'));
     }
 }

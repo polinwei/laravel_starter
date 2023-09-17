@@ -1,5 +1,7 @@
 @extends('layouts.NiceAdmin.index')
 @section('pageContent')
+{{ Breadcrumbs::render('dashboard') }}
+
 <section class="section dashboard">
   <div class="row">
     <!-- Left side columns -->

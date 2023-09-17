@@ -5,18 +5,20 @@
   <!-- ======= Header ======= -->
   @include('layouts.NiceAdmin.siteHeader')
   <!-- End Header -->
-  
+
   <!-- ======= Sidebar ======= -->
   @include('layouts.NiceAdmin.siteSidebar')
   <!-- End Sidebar-->
 
   <main id="main" class="main">
     <!-- Page Breadcrumb -->
-    @include('layouts.NiceAdmin.siteBreadcrumb')
+    <?php
+        //@include('layouts.NiceAdmin.siteBreadcrumb')
+    ?>
     <!-- End Page Breadcrumb -->
 
     <!-- Page Content -->
-    @yield('pageContent')   
+    @yield('pageContent')
 
   </main><!-- End #main -->
 

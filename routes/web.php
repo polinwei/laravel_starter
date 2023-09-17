@@ -45,7 +45,9 @@ Route::controller(HomeController::class)->group( function() {
   Route::post('reset-password', 'submitResetPasswordForm')->name('reset.password.post');
 });
 
-Route::get('system-user-profile', function() {return view('system.user.profile.index'); })->name('system.user.profile.get');
+Route::get('system-user-profile', function() {
+    return view('system.users.profile.index');
+})->name('system.user.profile.get');
 
 //Route::get('dashboard', [HomeController::class, 'dashboard'])->middleware(['auth', 'is_verify_email'])->name('dashboard');
 
