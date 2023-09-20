@@ -11,9 +11,11 @@
         @endif
 
         <div class="pull-right">
-            @can('user-create')
-                <a class="btn btn-success" href="{{ route('users.create') }}"> Create New User </a>
-             @endcan
+            @can('user-action')
+                @can('user-create')
+                    <a class="btn btn-success" href="{{ route('users.create') }}"> Create New User </a>
+                @endcan
+            @endcan
         </div>
 
 
@@ -29,7 +31,9 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Roles</th>
-                                    <th scope="col">Action</th>
+                                    @can('user-action')
+                                        <th scope="col">Action</th>
+                                    @endcan
                                 </tr>
                             </thead>
                             @foreach ($data as $key => $user)
@@ -44,11 +48,13 @@
                                             @endforeach
                                         @endif
                                     </td>
+                                    @can('user-action')
                                     <td>
                                         <a class="btn btn-info" href="{{ route('users.show', $user->id) }}">Show</a>
                                         <a class="btn btn-primary" href="{{ route('users.edit', $user->id) }}">Edit</a>
 
                                     </td>
+                                    @endcan
                                 </tr>
                             @endforeach
                         </table>
