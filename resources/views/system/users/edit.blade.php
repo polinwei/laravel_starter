@@ -15,26 +15,11 @@
                 <form class="row g-3">
                     <div class="col-md-4">
                         <label for="userName" class="form-label">Your Name</label>
-                        <input type="text" class="form-control" id="userName" value="{{ $user->name }}" readonly>
+                        <input type="text" class="form-control" id="userName" value="{{ $user->name }}">
                     </div>
                     <div class="col-md-4">
                         <label for="userEmail" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="userEmail" value="{{ $user->email }}" readonly>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="email_verified_at" class="form-label">Email Verified At</label>
-                        <input type="email" class="form-control" id="email_verified_at"
-                            value="{{ $user->email_verified_at }}" readonly>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="created_at" class="form-label">Created At</label>
-                        <input type="email" class="form-control" id="created_at"
-                            value="{{ $user->created_at }}" readonly>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="updated_at" class="form-label">Updated At</label>
-                        <input type="email" class="form-control" id="updated_at"
-                            value="{{ $user->updated_at }}" readonly>
+                        <input type="email" class="form-control" id="userEmail" value="{{ $user->email }}">
                     </div>
                     <div class="col-12">
                         <label for="Roles" class="form-label">Roles</label>
@@ -45,7 +30,8 @@
                         @endif
                     </div>
                     <div class="text-center">
-                        <a class="btn btn-primary" href="{{ route('users.edit', $user->id) }}">Edit</a>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
                     </div>
                 </form>
             </div>

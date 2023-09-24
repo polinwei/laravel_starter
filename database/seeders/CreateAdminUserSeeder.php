@@ -20,6 +20,8 @@ class CreateAdminUserSeeder extends Seeder
             'name' => 'Administrator',
             'email' => 'admin@example.com',
             'password' => bcrypt('12345678'),
+            'email_verified_at' => now(),
+            'updated_at' => now(),
             'is_email_verified' => true,
         ]);
 
@@ -33,6 +35,8 @@ class CreateAdminUserSeeder extends Seeder
             'name' => 'User',
             'email' => 'user@example.com',
             'password' => bcrypt('12345678'),
+            'email_verified_at' => now(),
+            'updated_at' => now(),
             'is_email_verified' => true,
         ]);
 
