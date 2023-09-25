@@ -52,7 +52,9 @@
                                     <td>
                                         <a class="btn btn-info" href="{{ route('users.show', $user->id) }}">Show</a>
                                         <a class="btn btn-primary" href="{{ route('users.edit', $user->id) }}">Edit</a>
-
+                                        {{ html()->form('DELETE')->route('users.destroy', $user->id)->open() }}
+                                        {{ html()->submit('Delete')->class('btn btn-danger') }}
+                                        {{ html()->form()->close() }}
                                     </td>
                                     @endcan
                                 </tr>

@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
+
 
 class UserController extends Controller
 {
@@ -39,7 +41,23 @@ class UserController extends Controller
         return view('system.users.index', compact('data'));
     }
 
+    public function create()
+    {
+        $permission = Permission::get();
+        $roles = Role::pluck('name','name')->all();
+        return view('system.users.create',compact('roles','permission'));
 
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|same:confirm-password',
+            'roles' => 'required'
+        ]);
+    }
 
     public function show($id)
     {
@@ -54,5 +72,11 @@ class UserController extends Controller
         $userRole = $user->roles->pluck('name','name')->all();
 
         return view('system.users.edit', compact('user', 'roles', 'userRole'));
+    }
+
+    public function destroy($id)
+    {
+        User::find($id)->delete();
+        return redirect()->route('users.index')->with('success', 'User deleted successfully');
     }
 }
