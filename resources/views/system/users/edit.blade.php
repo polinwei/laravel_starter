@@ -12,28 +12,29 @@
 
         <div class="card">
             <div class="card-body">
-                <form class="row g-3">
-                    <div class="col-md-4">
-                        <label for="userName" class="form-label">Your Name</label>
-                        <input type="text" class="form-control" id="userName" value="{{ $user->name }}">
-                    </div>
+                {{ html()->modelForm($user,'PATCH')->class('row g-3')->route('users.update', $user->id)->open() }}
                     <div class="col-md-4">
                         <label for="userEmail" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="userEmail" value="{{ $user->email }}">
+                        {{ html()->email('email') }}
                     </div>
+                    <div class="col-md-4">
+                        <label for="name" class="form-label">Your Name</label>
+                        {{ html()->text('name') }}
+                    </div>
+                    <div class="col-md-4">
+                        <label for="username" class="form-label">Your Name</label>
+                        {{ html()->text('username') }}
+                    </div>
+
                     <div class="col-12">
                         <label for="Roles" class="form-label">Roles</label>
-                        @if (!empty($user->getRoleNames()))
-                            @foreach ($user->getRoleNames() as $v)
-                                <label class="badge bg-primary">{{ $v }}</label>
-                            @endforeach
-                        @endif
+                        {{ html()->multiselect('roles[]', $roles, $userRole)->class('form-control') }}
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <button type="reset" class="btn btn-secondary">Reset</button>
                     </div>
-                </form>
+                {{ html()->closeModelForm() }}
             </div>
         </div>
 

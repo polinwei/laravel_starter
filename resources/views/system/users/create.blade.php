@@ -30,18 +30,18 @@
 
         <div class="card">
             <div class="card-body">
-                {{ html()->form('POST')->class('row g-3')->route('users.store')->open() }}
+                {{ html()->form('POST')->class('row g-3')->route('users.update')->open() }}
                     <div class="col-md-4">
                         <label for="userEmail" class="form-label">Email(登入系統用)</label>
-                        {{ html()->email('email')->class('form-control')->placeholder('e-mail address') }}
+                        {{ html()->email('email')->class('form-control')->placeholder('e-mail address')->required('email') }}
                     </div>
                     <div class="col-md-4">
-                        <label for="Name" class="form-label">帳號</label>
-                        {{ html()->text('name')->class('form-control')->placeholder('帳號') }}
+                        <label for="name" class="form-label">帳號</label>
+                        {{ html()->text('name')->class('form-control')->placeholder('帳號')->required() }}
                     </div>
                     <div class="col-md-4">
-                        <label for="userName" class="form-label">中文名</label>
-                        {{ html()->text('userName')->class('form-control')->placeholder('中文名') }}
+                        <label for="username" class="form-label">中文名</label>
+                        {{ html()->text('username')->class('form-control')->placeholder('中文名') }}
                     </div>
                     <div class="col-md-4">
                         <label for="password" class="form-label">密碼</label>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-12">
                         <label for="Roles" class="form-label">Roles</label>
-
+                        {{ html()->multiselect('roles[]', $roles)->class('form-control') }}
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Submit</button>
