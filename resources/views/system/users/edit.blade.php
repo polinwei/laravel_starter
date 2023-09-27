@@ -11,7 +11,13 @@
         @endif
 
         <div class="card">
+            <div class="card-header">
+                <div class="pull-right">
+                    <a class="btn btn-primary" href="{{ route('users.index') }}"> Back </a>
+                </div>
+            </div>
             <div class="card-body">
+                <h5 class="card-title">編輯用戶</h5>
                 {{ html()->modelForm($user,'PATCH')->class('row g-3')->route('users.update', $user->id)->open() }}
                     <div class="col-md-4">
                         <label for="userEmail" class="form-label">Email</label>

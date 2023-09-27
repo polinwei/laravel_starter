@@ -4,18 +4,6 @@
 
     <section class="section">
 
-        <div class="row">
-            <div class="col-lg-12 margin-tb">
-                <div class="pull-left">
-                    <h2>Create New User</h2>
-                </div>
-                <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('users.index') }}"> Back </a>
-                </div>
-            </div>
-        </div>
-
-
         @if (count($errors) > 0)
           <div class="alert alert-danger">
             <strong>Whoops!</strong>Something went wrong.<br><br>
@@ -27,10 +15,15 @@
           </div>
         @endif
 
-
         <div class="card">
+            <div class="card-header">
+                <div class="pull-right">
+                    <a class="btn btn-primary" href="{{ route('users.index') }}"> Back </a>
+                </div>
+            </div>
             <div class="card-body">
-                {{ html()->form('POST')->class('row g-3')->route('users.update')->open() }}
+                <h5 class="card-title">Create New User</h5>
+                {{ html()->form('POST')->class('row g-3')->route('users.store')->open() }}
                     <div class="col-md-4">
                         <label for="userEmail" class="form-label">Email(登入系統用)</label>
                         {{ html()->email('email')->class('form-control')->placeholder('e-mail address')->required('email') }}

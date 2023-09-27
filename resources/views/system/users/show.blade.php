@@ -11,7 +11,13 @@
         @endif
 
         <div class="card">
+            <div class="card-header">
+                <div class="pull-right">
+                    <a class="btn btn-primary" href="{{ route('users.index') }}"> Back </a>
+                </div>
+            </div>
             <div class="card-body">
+                <h5 class="card-title">用戶資訊</h5>
                 <form class="row g-3">
                     <div class="col-md-4">
                         <label for="userName" class="form-label">Your Name</label>

@@ -14,6 +14,11 @@ use Illuminate\Support\Arr;
 
 class UserController extends Controller
 {
+    /**
+     * __construct
+     * 權限設定
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('permission:user-action|user-list|user-create|user-edit|user-delete', ['only' => ['index','store']]);
@@ -37,10 +42,15 @@ class UserController extends Controller
             ->with('i', ($request->input('page,1') - 1) * 5);
          */
 
-        $data = User::all();
-        return view('system.users.index', compact('data'));
+        $users = User::all();
+        return view('system.users.index', compact('users'));
     }
 
+    /**
+     * create
+     * 建立帳號前的資料準備
+     * @return void
+     */
     public function create()
     {
         $permission = Permission::get();

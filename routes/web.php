@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\System\UserController;
+use App\Http\Controllers\System\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,8 +54,8 @@ Route::get('system-user-profile', function() {
 
 // 維護 users, roles
 Route::group(['middleware' => ['auth']], function() {
-  //Route::resource('roles', RoleController::class);
   Route::resource('users', UserController::class);
+  Route::resource('roles', RoleController::class);
 });
 
 

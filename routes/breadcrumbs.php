@@ -27,4 +27,9 @@ Breadcrumbs::for('users.index', function (BreadcrumbTrail $trail) {
     $trail->push('Users', route('users.index'));
 });
 
+// Roles
+Breadcrumbs::for('roles.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Roles', route('roles.index'));
+});
 
