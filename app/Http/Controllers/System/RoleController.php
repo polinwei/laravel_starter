@@ -22,7 +22,16 @@ class RoleController extends Controller
 
     public function index(Request $request)
     {
-        $roles = Role::orderBy('id','DESC');
+        //$roles = Role::orderBy('id','DESC')->paginate(5);
+        //return view('system.roles.index',compact('roles'))
+        //    ->with('i', ($request->input('page', 1) - 1) * 5);
+        $roles = Role::orderBy('id', 'DESC')->get();
         return view('system.roles.index', compact('roles'));
+    }
+
+    public function show($id)
+    {
+        $role = Role::find($id);
+        return view('system.roles.show', compact('role'));
     }
 }
