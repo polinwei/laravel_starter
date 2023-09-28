@@ -50,7 +50,7 @@
                             @endforeach
                         @endif
                     </div>
-                    <div class="text-center">
+                    <div class="text-left">
                         <a class="btn btn-primary" href="{{ route('users.edit', $user->id) }}">Edit</a>
                     </div>
                 </form>

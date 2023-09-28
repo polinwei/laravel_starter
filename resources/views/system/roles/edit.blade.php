@@ -4,9 +4,14 @@
 
     <section class="section">
 
-        @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-                <p>{{ $message }}</p>
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <strong>Whoops!</strong> something went wrong.<br><br>
+                <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+                </ul>
             </div>
         @endif
 
@@ -17,22 +22,22 @@
                 </div>
             </div>
             <div class="card-body">
-                <h5 class="card-title">角色資訊</h5>
+                <h5 class="card-title">編輯角色</h5>
+                {{ html()->modelForm($role,'PATCH')->class('row g-3')->route('roles.update', $role->id)->open() }}
+                    <div class="col-md-4">
+                        {{ html()->Label('角色名稱')->class('form-label') }}
+                        {{ html()->text('name')->class('form-control') }}
+                    </div>
+                    <div class="col-md-4">
+                        {{ html()->Label('角色名稱')->class('form-label') }}
+                        {{ html()->text('guard_name')->class('form-control')->isReadonly() }}
+                    </div>
 
-                {{ html()->modelForm($role)->class('row g-3')->open() }}
-                    <div class="col-md-4">
-                        {{ html()->Label('角色名稱')->class('form-label') }}
-                        {{ html()->text('name')->isReadonly()->class('form-control') }}
-                    </div>
-                    <div class="col-md-4">
-                        {{ html()->Label('角色名稱')->class('form-label') }}
-                        {{ html()->text('guard_name')->isReadonly()->class('form-control') }}
-                    </div>
                     <div class="text-left">
-                        {{ html()->A()->text('EDIT')->href(route('roles.edit', $role->id))->class('btn btn-primary') }}
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
                     </div>
                 {{ html()->closeModelForm() }}
-
             </div>
         </div>
 

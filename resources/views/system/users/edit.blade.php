@@ -36,7 +36,7 @@
                         <label for="Roles" class="form-label">Roles</label>
                         {{ html()->multiselect('roles[]', $roles, $userRole)->class('form-control') }}
                     </div>
-                    <div class="text-center">
+                    <div class="text-left">
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <button type="reset" class="btn btn-secondary">Reset</button>
                     </div>
