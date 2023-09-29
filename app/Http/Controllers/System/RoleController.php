@@ -52,7 +52,11 @@ class RoleController extends Controller
     public function show($id)
     {
         $role = Role::find($id);
-        return view('system.roles.show', compact('role'));
+        $rolePermissions = Permission::join('role_has_permissions','role_has_permissions.permission_id', '=', 'permissions.id')
+            ->where('role_has_permissions.role_id', $id)
+            ->get();
+
+        return view('system.roles.show', compact('role', 'rolePermissions'));
     }
 
     public function edit($id)

@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <h5 class="card-title">Create New User</h5>
+                <h5 class="card-title text-center text-primary">Create New User</h5>
                 {{ html()->form('POST')->class('row g-3')->route('roles.store')->open() }}
                     <div class="col-md-4">
                         {{ html()->Label('角色名稱')->class('form-label') }}

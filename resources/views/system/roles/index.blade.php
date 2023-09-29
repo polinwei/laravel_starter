@@ -21,7 +21,7 @@
                         @endcan
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">群組管理</h5>
+                        <h5 class="card-title text-center text-primary">角色管理</h5>
                         <table class="table datatable">
                             <thead>
                                 <tr>
@@ -41,7 +41,7 @@
                                     <td>
                                         {{ html()->form('DELETE')->route('roles.destroy', $role->id)->open() }}
                                         <a class="btn btn-info" href="{{ route('roles.show', $role->id) }}">Show</a>
-                                        @can('role-create')
+                                        @can('role-edit')
                                             <a class="btn btn-primary" href="{{ route('roles.edit', $role->id) }}">Edit</a>
                                         @endcan
                                         @can('role-delete')
