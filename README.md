@@ -16,8 +16,8 @@
 ```php artisan db:seed MerchandisesTableSeeder```
 
 ## 軟體版本需求
-- [XAMPP for Windows 8.1.6](https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.1.6/)
--   PHP version: 8.1.6
+- [XAMPP for Windows 8.2.4](https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.4/)
+-   PHP version: 8.2.4
 -   MariaDB : 10.4.24-MariaDB
 -   DB: twingo3	編碼: utf8mb4_unicode_ci
 ## [NVM: 1.1.10](https://sourceforge.net/projects/nvm-for-windows.mirror/files/)

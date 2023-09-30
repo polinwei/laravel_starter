@@ -14,8 +14,8 @@ class UsersTableSeeder extends Seeder
      * Run the database seeds.
      */
     public function run(): void
-    {   
-        // \App\Models\User::factory(10)->create();
+    {
+        \App\Models\User::factory(1000)->create();
         DB::table('users')->insert([
             'name' => Str::random(10),
             'username' => Str::random(10),
