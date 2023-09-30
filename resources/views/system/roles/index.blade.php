@@ -1,6 +1,6 @@
 @extends('layouts.NiceAdmin.index')
 @section('pageContent')
-    {{ Breadcrumbs::render('roles.index') }}
+    {{ Breadcrumbs::render('roles.index', 'Role') }}
 
     <section class="section">
         @include('layouts.common.infoMessage')

@@ -1,6 +1,6 @@
 @extends('layouts.NiceAdmin.index')
 @section('pageContent')
-    {{ Breadcrumbs::render('roles.index') }}
+    {{ Breadcrumbs::render('roles.show', $role) }}
 
     <section class="section">
         <div class="card">

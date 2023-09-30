@@ -1,6 +1,6 @@
 @extends('layouts.NiceAdmin.index')
 @section('pageContent')
-    {{ Breadcrumbs::render('users.index') }}
+    {{ Breadcrumbs::render('users.edit', $user) }}
 
     <section class="section">
         @include('layouts.common.errorMessage')

@@ -1,6 +1,6 @@
 @extends('layouts.NiceAdmin.index')
 @section('pageContent')
-    {{ Breadcrumbs::render('roles.index') }}
+    {{ Breadcrumbs::render('roles.create', $role) }}
 
     <section class="section">
         @include('layouts.common.errorMessage')
@@ -12,18 +12,28 @@
                 </div>
             </div>
             <div class="card-body">
-                <h5 class="card-title text-center text-primary">Create New User</h5>
+                <h5 class="card-title text-center text-primary">建立新角色</h5>
                 {{ html()->form('POST')->class('row g-3')->route('roles.store')->open() }}
                     <div class="col-md-4">
                         {{ html()->Label('角色名稱')->class('form-label') }}
                         {{ html()->text('name')->class('form-control') }}
                     </div>
-                    <div class="col-md-4">
-                        {{ html()->Label('角色權限')->class('form-label') }}
-                        @foreach ($permission as $value)
-                            {{ html()->checkbox('permission[]', $value->id)->class('form-control') }}
-                            {{ $value->name }}
-                        @endforeach
+                    <h5 class="card-title bg-secondary text-white">權限列表</h5>
+                    <div class="row">
+                        <table class="table datatable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Name</th>
+                                </tr>
+                            </thead>
+                            @foreach ($permission as $value)
+                                <tr>
+                                    <td>{{ html()->checkbox('permission[]',  false, $value->id) }}</td>
+                                    <td>{{ $value->name }}</td>
+                                </tr>
+                            @endforeach
+                        </table>
 
                     </div>
                     @can('role-create')

@@ -2,6 +2,7 @@
 @section('pageContent')
 
 <div class="container">
+    {{ Breadcrumbs::render('errors.403') }}
     <section class="section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center">
     <h1>403</h1>
     <h2>您沒有權限</h2>

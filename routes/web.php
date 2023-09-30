@@ -26,7 +26,7 @@ Route::get('register', function () { return view('register'); });
 Route::get('/', function () { return view('welcome'); })->name('welcome');
 
 Route::controller(HomeController::class)->group( function() {
-  Route::get('home' , 'index')->name('home');
+  Route::get('home' , 'dashboard')->name('home');
   Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
   Route::get('login', 'login')->name('login');
   Route::get('jwtLogin', 'jwtLogin')->name('jwtLogin');
