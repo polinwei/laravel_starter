@@ -27,19 +27,6 @@ Breadcrumbs::for('dashboard', function (BreadcrumbTrail $trail) {
     $trail->push('Dashboard', route('dashboard'));
 });
 
-// Users
-/**
-Breadcrumbs::for('users.index', function (BreadcrumbTrail $trail) {
-    $trail->parent('home');
-    $trail->push('Users', route('users.index'));
-});
-
-Breadcrumbs::for('users.show', function (BreadcrumbTrail $trail, User $user) {
-    $trail->parent('users.index');
-    $trail->push('Show', route('users.show', $user));
-});
- */
-
 // For Route::resource($name, class)
 Breadcrumbs::macro('resource', function (string $name, string $title) {
     // Home > User
@@ -69,10 +56,3 @@ Breadcrumbs::macro('resource', function (string $name, string $title) {
 
 Breadcrumbs::resource('users', 'User');
 Breadcrumbs::resource('roles', 'Role');
-
-// Roles
-//Breadcrumbs::for('roles.index', function (BreadcrumbTrail $trail) {
-//    $trail->parent('home');
-//    $trail->push('Roles', route('roles.index'));
-//});
-
