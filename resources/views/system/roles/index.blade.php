@@ -3,12 +3,7 @@
     {{ Breadcrumbs::render('roles.index') }}
 
     <section class="section">
-
-        @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-            <p>{{ $message }}</p>
-            </div>
-        @endif
+        @include('layouts.common.infoMessage')
 
         <div class="row">
             <div class="col-lg-12">
@@ -55,7 +50,6 @@
                         </table>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>

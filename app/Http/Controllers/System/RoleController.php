@@ -12,6 +12,11 @@ class RoleController extends Controller
 {
     //
 
+    /**
+     * __construct
+     * 權限設定
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('permission:role-action|role-list|role-create|role-edit|role-delete', ['only' => ['index','store']]);
@@ -20,6 +25,12 @@ class RoleController extends Controller
         $this->middleware('permission:role-delete', ['only' => ['destroy']]);
     }
 
+    /**
+     * index
+     * 顯示所有資料
+     * @param  mixed $request
+     * @return void
+     */
     public function index(Request $request)
     {
         //$roles = Role::orderBy('id','DESC')->paginate(5);
@@ -29,12 +40,23 @@ class RoleController extends Controller
         return view('system.roles.index', compact('roles'));
     }
 
+    /**
+     * create
+     * 建立資料前的資料準備
+     * @return void
+     */
     public function create()
     {
         $permission = Permission::get();
         return view('system.roles.create', compact('permission'));
     }
 
+    /**
+     * store
+     * 儲存資料
+     * @param  mixed $request
+     * @return void
+     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -49,6 +71,12 @@ class RoleController extends Controller
                         ->with('success','Role created successfully');
     }
 
+    /**
+     * show
+     * 顯示單筆資料
+     * @param  mixed $id
+     * @return void
+     */
     public function show($id)
     {
         $role = Role::find($id);
@@ -59,6 +87,12 @@ class RoleController extends Controller
         return view('system.roles.show', compact('role', 'rolePermissions'));
     }
 
+    /**
+     * edit
+     * 編輯資料
+     * @param  mixed $id
+     * @return void
+     */
     public function edit($id)
     {
         $role = Role::find($id);
@@ -70,6 +104,13 @@ class RoleController extends Controller
         return view('system.roles.edit',compact('role','permission','rolePermissions'));
     }
 
+    /**
+     * update
+     * 更新資料
+     * @param  mixed $request
+     * @param  mixed $id
+     * @return void
+     */
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -86,6 +127,12 @@ class RoleController extends Controller
         return redirect()->route('roles.index')->with('success', 'Role updated successfully');
     }
 
+    /**
+     * destroy
+     * 刪除單筆資料
+     * @param  mixed $id
+     * @return void
+     */
     public function destroy($id)
     {
         DB::table('roles')->where('id', $id)->delete();

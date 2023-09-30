@@ -3,12 +3,7 @@
     {{ Breadcrumbs::render('users.index') }}
 
     <section class="section">
-
-        @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-                <p>{{ $message }}</p>
-            </div>
-        @endif
+        @include('layouts.common.errorMessage')
 
         <div class="card">
             <div class="card-header">
@@ -44,10 +39,12 @@
                         <label for="Roles" class="form-label">Roles</label>
                         {{ html()->multiselect('roles[]', $roles, $userRole)->class('form-control') }}
                     </div>
-                    <div class="text-left">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="reset" class="btn btn-secondary">Reset</button>
-                    </div>
+                    @can('user-edit')
+                        <div class="text-left">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                        </div>
+                    @endcan
                 {{ html()->closeModelForm() }}
             </div>
         </div>

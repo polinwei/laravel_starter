@@ -3,17 +3,7 @@
     {{ Breadcrumbs::render('roles.index') }}
 
     <section class="section">
-
-        @if (count($errors) > 0)
-          <div class="alert alert-danger">
-            <strong>Whoops!</strong>Something went wrong.<br><br>
-            <ul>
-               @foreach ($errors->all() as $error)
-                 <li>{{ $error }}</li>
-               @endforeach
-            </ul>
-          </div>
-        @endif
+        @include('layouts.common.errorMessage')
 
         <div class="card">
             <div class="card-header">
@@ -36,16 +26,14 @@
                         @endforeach
 
                     </div>
-                    <div class="text-left">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="reset" class="btn btn-secondary">Reset</button>
-                    </div>
+                    @can('role-create')
+                        <div class="text-left">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                        </div>
+                    @endcan
                 {{ html()->form()->close() }}
             </div>
         </div>
-
-
-
-
     </section>
 @endsection

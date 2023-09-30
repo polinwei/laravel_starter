@@ -3,12 +3,7 @@
     {{ Breadcrumbs::render('users.index') }}
 
     <section class="section">
-
-        @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-            <p>{{ $message }}</p>
-            </div>
-        @endif
+        @include('layouts.common.infoMessage')
 
         <div class="row">
             <div class="col-lg-12">
@@ -26,8 +21,9 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Email</th>
+                                    <th scope="col">帳號</th>
+                                    <th scope="col">姓名</th>
+                                    <th scope="col">Email(登入系統用)</th>
                                     <th scope="col">Roles</th>
                                     @can('user-action')
                                         <th scope="col">Action</th>
@@ -38,6 +34,7 @@
                                 <tr>
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
+                                    <td>{{ $user->username }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>
                                         @if (!empty($user->getRoleNames()))

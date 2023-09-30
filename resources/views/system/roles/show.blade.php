@@ -3,18 +3,13 @@
     {{ Breadcrumbs::render('roles.index') }}
 
     <section class="section">
-
-        @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-                <p>{{ $message }}</p>
-            </div>
-        @endif
-
         <div class="card">
             <div class="card-header">
                 <div class="pull-right">
                     <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back </a>
-                    {{ html()->A()->text('EDIT')->href(route('roles.edit', $role->id))->class('btn btn-primary') }}
+                    @can('role-edit')
+                        {{ html()->A()->text('EDIT')->href(route('roles.edit', $role->id))->class('btn btn-primary') }}
+                    @endcan
                 </div>
             </div>
             <div class="card-body">
@@ -50,8 +45,5 @@
 
             </div>
         </div>
-
-
-
     </section>
 @endsection

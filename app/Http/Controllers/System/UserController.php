@@ -29,7 +29,7 @@ class UserController extends Controller
     //
     /**
      * index
-     * 顯示所有帳號
+     * 顯示所有資料
      * @param  mixed $request
      * @return void
      */
@@ -48,7 +48,7 @@ class UserController extends Controller
 
     /**
      * create
-     * 建立帳號前的資料準備
+     * 建立資料前的資料準備
      * @return void
      */
     public function create()
@@ -59,6 +59,12 @@ class UserController extends Controller
 
     }
 
+    /**
+     * store
+     * 儲存資料
+     * @param  mixed $request
+     * @return void
+     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -70,18 +76,31 @@ class UserController extends Controller
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
+        $input['is_email_verified'] = true;
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
 
         return redirect()->route('users.index')->with('success', '帳號建立成功');
     }
 
+    /**
+     * show
+     * 顯示單筆資料
+     * @param  mixed $id
+     * @return void
+     */
     public function show($id)
     {
         $user = User::find($id);
         return view('system.users.show', compact('user'));
     }
 
+    /**
+     * edit
+     * 編輯資料
+     * @param  mixed $id
+     * @return void
+     */
     public function edit($id)
     {
         $user = User::find($id);
@@ -91,6 +110,13 @@ class UserController extends Controller
         return view('system.users.edit', compact('user', 'roles', 'userRole'));
     }
 
+    /**
+     * update
+     * 更新資料
+     * @param  mixed $request
+     * @param  mixed $id
+     * @return void
+     */
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -117,8 +143,15 @@ class UserController extends Controller
                         ->with('success','User updated successfully');
     }
 
+    /**
+     * destroy
+     * 刪除單筆資料
+     * @param  mixed $id
+     * @return void
+     */
     public function destroy($id)
     {
+        DB::table('model_has_roles')->where('model_id', $id)->delete();
         User::find($id)->delete();
         return redirect()->route('users.index')->with('success', 'User deleted successfully');
     }

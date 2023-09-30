@@ -3,17 +3,7 @@
     {{ Breadcrumbs::render('users.index') }}
 
     <section class="section">
-
-        @if (count($errors) > 0)
-          <div class="alert alert-danger">
-            <strong>Whoops!</strong>Something went wrong.<br><br>
-            <ul>
-               @foreach ($errors->all() as $error)
-                 <li>{{ $error }}</li>
-               @endforeach
-            </ul>
-          </div>
-        @endif
+        @include('layouts.common.errorMessage')
 
         <div class="card">
             <div class="card-header">
@@ -48,10 +38,12 @@
                         <label for="Roles" class="form-label">Roles</label>
                         {{ html()->multiselect('roles[]', $roles)->class('form-control') }}
                     </div>
-                    <div class="text-left">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="reset" class="btn btn-secondary">Reset</button>
-                    </div>
+                    @can('user-create')
+                        <div class="text-left">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                        </div>
+                    @endcan
                 {{ html()->form()->close() }}
             </div>
         </div>
