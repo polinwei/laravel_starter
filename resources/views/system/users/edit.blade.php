@@ -16,15 +16,15 @@
                 {{ html()->modelForm($user,'PATCH')->class('row g-3')->route('users.update', $user->id)->open() }}
                     <div class="col-md-4">
                         <label for="userEmail" class="form-label">Email(登入系統用)</label>
-                        {{ html()->email('email') }}
+                        {{ html()->email('email')->class('form-control') }}
                     </div>
                     <div class="col-md-4">
                         <label for="name" class="form-label">帳號</label>
-                        {{ html()->text('name') }}
+                        {{ html()->text('name')->class('form-control') }}
                     </div>
                     <div class="col-md-4">
                         <label for="username" class="form-label">中文名</label>
-                        {{ html()->text('username') }}
+                        {{ html()->text('username')->class('form-control') }}
                     </div>
                     <div class="col-md-4">
                         <label for="password" class="form-label">密碼</label>
@@ -36,7 +36,7 @@
                     </div>
 
                     <div class="col-12">
-                        <label for="Roles" class="form-label">Roles</label>
+                        <label for="Roles" class="form-label">角色(Roles)</label>
                         {{ html()->multiselect('roles[]', $roles, $userRole)->class('form-control') }}
                     </div>
                     @can('user-edit')

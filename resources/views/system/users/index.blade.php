@@ -24,7 +24,7 @@
                                     <th scope="col">帳號</th>
                                     <th scope="col">姓名</th>
                                     <th scope="col">Email(登入系統用)</th>
-                                    <th scope="col">Roles</th>
+                                    <th scope="col">角色(Roles)</th>
                                     @can('user-action')
                                         <th scope="col">Action</th>
                                     @endcan

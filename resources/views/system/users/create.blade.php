@@ -35,7 +35,7 @@
                         {{ html()->password('confirm-password')->class('form-control')->placeholder('確認密碼') }}
                     </div>
                     <div class="col-12">
-                        <label for="Roles" class="form-label">Roles</label>
+                        <label for="Roles" class="form-label">角色(Roles)</label>
                         {{ html()->multiselect('roles[]', $roles)->class('form-control') }}
                     </div>
                     @can('user-create')
