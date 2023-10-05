@@ -19,7 +19,7 @@
                     </div>
                     <div class="col-md-4">
                         <label for="userName" class="form-label">中文名</label>
-                        <input type="text" class="form-control" id="userName" value="{{ $user->userName }}" readonly>
+                        <input type="text" class="form-control" id="userName" value="{{ $user->username }}" readonly>
                     </div>
                     <div class="col-md-4">
                         <label for="userEmail" class="form-label">Email(登入系統用)</label>
