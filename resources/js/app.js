@@ -6,15 +6,25 @@
 
 import './bootstrap';
 
+// <!-- Vendor JS Files from NPM -->
+import {DataTable} from 'simple-datatables'
+const myTable = document.querySelector(".datatable");
+const dataTable = new DataTable(myTable);
+
+
 // <!-- Vendor JS Files -->
-import '../NiceAdmin/vendor/apexcharts/apexcharts.min.js'  
-// import '../NiceAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js'  // 會衝突以 php artisan ui vue 的套件為主
-import '../NiceAdmin/vendor/chart.js/chart.umd.js'
-import '../NiceAdmin/vendor/echarts/echarts.min.js'
-import '../NiceAdmin/vendor/quill/quill.min.js'
-import '../NiceAdmin/vendor/simple-datatables/simple-datatables.js'
-import '../NiceAdmin/vendor/tinymce/tinymce.min.js'
+import '../NiceAdmin/vendor/apexcharts/apexcharts.min.js'
 import '../NiceAdmin/vendor/php-email-form/validate.js'
+
+/** Vendor JS Files  */
+// import '../NiceAdmin/vendor/bootstrap/js/bootstrap.bundle.min.js'  // 會衝突以 php artisan ui vue 的套件為主
+// import '../NiceAdmin/vendor/chart.js/chart.umd.js'
+// import '../NiceAdmin/vendor/echarts/echarts.min.js'
+// import '../NiceAdmin/vendor/quill/quill.min.js'
+// import '../NiceAdmin/vendor/tinymce/tinymce.min.js'
+
+
+
 // <!-- Template Main JS File -->
 import '../NiceAdmin/js/main.js'
 

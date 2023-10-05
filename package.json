@@ -16,6 +16,8 @@
         "vue": "^3.2.36"
     },
     "dependencies": {
+        "bootstrap-icons": "^1.11.1",
+        "simple-datatables": "^8.0.0",
         "vue-router": "^4.0.13"
     }
 }
