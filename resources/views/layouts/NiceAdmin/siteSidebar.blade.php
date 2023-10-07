@@ -32,11 +32,6 @@
                         <i class="bi bi-circle"></i><span>角色管理</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('system.user.profile.get') }}">
-                        <i class="bi bi-circle"></i><span>用戶設定檔</span>
-                    </a>
-                </li>
         </li>
     </ul>
     </li><!-- End System Nav -->
