@@ -9,8 +9,9 @@ import './bootstrap';
 // <!-- Vendor JS Files from NPM -->
 import {DataTable} from 'simple-datatables'
 const myTable = document.querySelector(".datatable");
-const dataTable = new DataTable(myTable);
-
+if (myTable) {
+    const dataTable = new DataTable(myTable);
+}
 
 // <!-- Vendor JS Files -->
 import '../NiceAdmin/vendor/apexcharts/apexcharts.min.js'

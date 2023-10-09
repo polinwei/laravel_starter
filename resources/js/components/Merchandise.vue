@@ -11,7 +11,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { apiClient } from '@/axios';
+
 export default {
 data() {
   return {
@@ -20,8 +21,8 @@ data() {
 },
 async created() {
   try {
-  const response = await axios.get(`/api/merchandises/${this.$route.params.id}`);
-  this.merchandises = response.data;
+  const response = await apiClient.get(`/merchandises/${this.$route.params.id}`);
+  this.merchandises = response.data.result;
   } catch (error) {
   console.error(error);
   }

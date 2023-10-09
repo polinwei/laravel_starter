@@ -22,7 +22,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { apiClient } from '@/axios';
+
 export default {
   data() {
     return {
@@ -40,17 +41,17 @@ export default {
   },
   async created() {
     if (!this.isNewProduct) {
-      const response = await axios.get(`/api/merchandises/${this.$route.params.id}`);
-      this.merchandise = response.data;
+      const response = await apiClient.get(`/merchandises/${this.$route.params.id}`);
+      this.merchandise = response.data.result;
     }
   },
   methods: {
     async submitForm() {
       try {
         if (this.isNewProduct) {
-          await axios.post('/api/merchandises', this.merchandise);
+          await apiClient.post('/merchandises', this.merchandise);
         } else {
-          await axios.put(`/api/merchandises/${this.$route.params.id}`, this.merchandise);
+          await apiClient.put(`/merchandises/${this.$route.params.id}`, this.merchandise);
         }
         this.$router.push('/vueWelcome');
       } catch (error) {

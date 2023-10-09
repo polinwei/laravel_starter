@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 
 class JwtBaseController extends Controller
 {
-    
+
     /**
      * sendResponse
      * 以 JSON 格式回傳成功訊息
@@ -20,13 +20,13 @@ class JwtBaseController extends Controller
     {
     	$response = [
             'success' => true,
-            'data'    => $result,
+            'result'    => $result,
             'message' => $message,
         ];
 
         return response()->json($response, 200);
     }
-    
+
     /**
      * sendError
      * 以 JSON 格式回傳失敗訊息

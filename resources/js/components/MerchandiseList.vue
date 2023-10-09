@@ -30,7 +30,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { apiClient } from '@/axios';
+
 export default {
 data() {
   return {
@@ -39,8 +40,8 @@ data() {
 },
 async created() {
   try {
-    const response = await axios.get('/api/merchandises');
-    this.merchandises = response.data;
+    const response = await apiClient.get('/merchandises');
+    this.merchandises = response.data.result;
   } catch (error) {
     console.error(error);
   }
@@ -48,7 +49,7 @@ async created() {
 methods: {
   async deleteMerchandise(id) {
     try {
-      await axios.delete(`/api/merchandises/${id}`);
+      await apiClient.delete(`/merchandises/${id}`);
       this.merchandises = this.merchandises.filter(merchandise => merchandise.id !== id);
     } catch (error) {
       console.error(error);
