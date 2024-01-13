@@ -66,11 +66,11 @@ class HomeController extends Controller
             'password' => 'required'
         ]);
         Log::debug($request);
-        Logger::debug($request,__FILE__,__LINE__);        
+        Logger::debug($request,__FILE__,__LINE__);
 
         $credentials = $request->only('email', 'password');
         $remember_me = $request->has('rememberMe') ? true : false;
-        
+
         if (Auth::attempt($credentials, $remember_me) && !Auth::user()->is_email_verified) {
             auth()->logout();
             return redirect()->route('login')
@@ -83,7 +83,7 @@ class HomeController extends Controller
         if (Auth::attempt($credentials, $remember_me)) {
             return redirect()->intended('dashboard')->withSuccess('You have successfully Signed in');
         }
-              
+
         return back() // 回錯誤傳訊息到登入頁面
             ->with('message', 'Login credentials are not valid!')
             ->withErrors([
@@ -93,7 +93,7 @@ class HomeController extends Controller
 
     /**
      * signOut
-     * 登出系統 清除session 
+     * 登出系統 清除session
      * @return void
      */
     public function signOut()
@@ -122,13 +122,14 @@ class HomeController extends Controller
 
         // 建立帳號
         $data = $request->all();
-        $createUser = $this->createUser($data);
+        $createUser = User::create($data);
 
         // 送出驗證信件到用戶信箱
         $token = Str::random(64);
 
         UserVerify::create([
             'user_id' => $createUser->id,
+            'verify_type' => 'email',
             'token' => $token
         ]);
 
@@ -183,22 +184,6 @@ class HomeController extends Controller
         }
 
         return redirect()->route('jwtLogin')->with('message', $message);
-    }
-
-    /**
-     * createUser
-     * 建立帳號
-     * @param  mixed $data
-     * @return void
-     */
-    public function createUser(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password'])
-        ]);
     }
 
     /**

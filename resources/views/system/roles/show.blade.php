@@ -21,6 +21,10 @@
                         {{ html()->text('name')->isReadonly()->class('form-control') }}
                     </div>
                     <div class="col-md-4">
+                        {{ html()->Label('角色說明')->class('form-label') }}
+                        {{ html()->text('description')->isReadonly()->class('form-control') }}
+                    </div>
+                    <div class="col-md-4">
                         {{ html()->Label('權限位置')->class('form-label') }}
                         {{ html()->text('guard_name')->isReadonly()->class('form-control') }}
                     </div>

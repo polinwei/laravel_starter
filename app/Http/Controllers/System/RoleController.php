@@ -65,7 +65,10 @@ class RoleController extends Controller
             'permission' => 'required'
         ]);
 
-        $role = Role::create(['name' => $request->input('name')]);
+        $role = Role::create([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+        ]);
         $role->syncPermissions($request->input('permission'));
 
         return redirect()->route('roles.index')
@@ -121,6 +124,7 @@ class RoleController extends Controller
 
         $role = Role::find($id);
         $role->name = $request->input('name');
+        $role->description = $request->input('description');
         $role->save();
 
         $role->syncPermissions($request->input('permission'));

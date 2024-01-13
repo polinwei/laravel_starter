@@ -18,6 +18,10 @@
                         {{ html()->Label('角色名稱')->class('form-label') }}
                         {{ html()->text('name')->class('form-control') }}
                     </div>
+                    <div class="col-md-4">
+                        {{ html()->Label('角色說明')->class('form-label') }}
+                        {{ html()->text('description')->class('form-control') }}
+                    </div>
                     <h5 class="card-title bg-secondary text-white">權限列表</h5>
                     <div class="row">
                         <table class="table datatable">

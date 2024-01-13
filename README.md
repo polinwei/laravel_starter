@@ -14,6 +14,8 @@
 ## 增加假資料
 ```php artisan db:seed```
 ```php artisan db:seed MerchandisesTableSeeder```
+```php artisan db:seed PermissionTableSeeder```
+```php artisan db:seed CreateAdminUserSeeder```
 
 ## 軟體版本需求
 - [XAMPP for Windows 8.2.4](https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.4/)

@@ -22,6 +22,7 @@
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Name</th>
+                                    <th scope="col">Description</th>
                                     @can('role-action')
                                         <th scope="col">Action</th>
                                     @endcan
@@ -31,7 +32,7 @@
                                 <tr>
                                     <td>{{ $role->id }}</td>
                                     <td>{{ $role->name }}</td>
-
+                                    <td>{{ $role->description }}</td>
                                     @can('role-action')
                                     <td>
                                         {{ html()->form('DELETE')->route('roles.destroy', $role->id)->open() }}
